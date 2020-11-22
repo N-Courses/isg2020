@@ -1,0 +1,17 @@
+
+
+<input    [(ngModel)]="new_task"    >
+<button  (click)="add()"  >    Add</button>
+
+<ul>
+    <li *ngFor="let element of list; let i = index"
+    [style.background]="element.status == 1 ? '#d1f9d1' : '' "
+    >
+      
+       {{i}} - {{element.content}} <br>
+       {{element.created_at | date : 'dd-MM-yyy H:m' }}
+        {{element.status}}
+       <button (click)="done(i)">Done</button>
+    </li>
+</ul>
+

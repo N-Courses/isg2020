@@ -1,0 +1,24 @@
+Bonjour
+<!-- Data Binding -->
+{{title}}
+<br>
+<input   value="{{title}}">
+<br>
+<!-- property Binding -->
+
+<input [value]="title"  (keyup)="keyupFunction($event.target.value)">
+
+
+<button  (click)="myFunction()" > Click</button>
+
+<!-- example 1-->
+<input [value]="nb" >
+<button  (click)="inc()" > +</button>
+<button *ngIf=" nb >  0"  (click)="dec()" > -</button>
+<button  [disabled]=" nb>0 ? false : true "  (click)="dec()" > -</button>
+
+
+
+<br>
+
+<input   [(ngModel)]="title">
