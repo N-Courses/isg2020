@@ -1,0 +1,23 @@
+<div class="col-md-6 offset-md-3">
+    {{addForm.valid}}
+    <form [formGroup]="addForm">
+        <label>Nom</label>
+        <input class="form-control" formControlName="nom_eleve"
+        [(ngModel)]="new_student.nom"
+        required minlength="3">
+        <br>
+        <label>Age</label>
+        <input class="form-control"  formControlName="age"
+        [(ngModel)]="new_student.age">
+        <br>
+        <label>Genre</label>
+        <select class="form-control"
+        [(ngModel)]="new_student.genre"
+         required formControlName="genre">
+            <option value="G">Garçon</option>
+            <option value="F"> Fille</option>
+        </select>
+        <br>
+        <button (click)="save()" [disabled]="!addForm.valid" class="form-control btn-success">Save</button>
+    </form>
+</div>

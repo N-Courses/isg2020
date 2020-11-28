@@ -1,0 +1,37 @@
+<div class="col-md-6 offset-md-3">
+    <div class="row">
+
+        <div class="col-md-4">
+            <input class="form-control" placeholder="Search"
+                (keyup)="filter($event)"
+            >
+
+        </div>
+
+        <div class="col-md-4">
+            <select class="form-control" (change)="sort($event)">
+                <option value="asc" >Asecendent Score</option>
+                <option value="desc">Descendent</option>
+
+            </select>
+        </div>
+
+        <div class="col-md-4">
+            <button class="form-control btn-danger">Add New</button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3" *ngFor="let student of students" style="padding-top : 50px">
+            <div class="card">
+                <img [src]="'assets/'+student.photo">
+               <!--  <img src="assets/{{student.photo}}"> -->
+                <h3 >{{student.nom}}</h3>
+                <h4>{{student.score}}</h4>
+            </div>
+            
+        </div>
+       
+    </div>
+
+</div>
