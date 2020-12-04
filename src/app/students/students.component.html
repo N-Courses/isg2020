@@ -1,3 +1,4 @@
+
 <div class="col-md-6 offset-md-3">
     <div class="row">
 
@@ -17,13 +18,16 @@
         </div>
 
         <div class="col-md-4">
-            <button class="form-control btn-danger">Add New</button>
+           
+                <button [routerLink]="['/add']" class="form-control btn-danger">Add New</button>
+
+           
         </div>
     </div>
 
     <div class="row">
         <div class="col-md-3" *ngFor="let student of students" style="padding-top : 50px">
-            <div class="card">
+            <div class="card"  [routerLink]="['/game',student.nom]">
                 <img [src]="'assets/'+student.photo">
                <!--  <img src="assets/{{student.photo}}"> -->
                 <h3 >{{student.nom}}</h3>

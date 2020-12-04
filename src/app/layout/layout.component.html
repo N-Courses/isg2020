@@ -1,0 +1,14 @@
+<div class="navbar bg-primary">
+    <b [routerLink]="['/binding']">Binding</b>   
+    <b [routerLink]="['/students']">Students</b>    
+    <b [routerLink]="['/todo']">To Do List</b>   
+
+    <b >
+        <span *ngIf="translate.currentLang == 'fr'" (click)="changeLang('en')">English</span>
+        <span *ngIf="translate.currentLang == 'en'" (click)="changeLang('fr')">Français</span>
+
+    </b>
+   
+</div>
+
+<router-outlet></router-outlet>

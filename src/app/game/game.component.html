@@ -1,0 +1,13 @@
+
+<div class="col-md-6 offset-md-3">
+    <h2> {{'h' | translate}} {{nom}}</h2>
+    <h1 *ngIf="compteur < 11">Question : {{compteur}} / 10</h1>
+    <b *ngIf="compteur < 11"> {{nb1}} * {{nb2}} </b>
+    <input [disabled]="compteur >10 " class="form-control" [(ngModel)]="result" (keyup.enter)="next()">
+    <br>
+    <b *ngIf="compteur > 10" style="color: green; text-align: center;">Score : {{score}}</b>
+    <br>
+    <button *ngIf="compteur < 10" class="form-control btn-success" (click)="next()">Next</button>
+    <button *ngIf="compteur == 10" class="form-control btn-danger" (click)="finish()">Finish</button>
+    <button *ngIf="compteur > 10" class="form-control btn-warning" (click)="back()">Back</button>
+</div>
