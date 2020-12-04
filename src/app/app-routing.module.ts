@@ -4,6 +4,7 @@ import { AddStudentComponent } from './add-student/add-student.component';
 import { BindingComponent } from './binding/binding.component';
 import { GameComponent } from './game/game.component';
 import { LayoutComponent } from './layout/layout.component';
+import { RegisterComponent } from './register/register.component';
 import { StudentsComponent } from './students/students.component';
 import { TodoComponent } from './todo/todo.component';
 
@@ -37,7 +38,10 @@ const routes: Routes = [
       }
     ]
   }
-  ,
+  ,{
+    path : 'register',
+    component : RegisterComponent
+  },
   {
     path : '**',
     component : BindingComponent

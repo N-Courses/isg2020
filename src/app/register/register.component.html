@@ -1,0 +1,40 @@
+
+    <div class=" login col-md-6 offset-md-3">
+        <h2>Register</h2>
+          <form [formGroup]="login_form">
+            <div class="form-group">
+                <label >Nom</label>
+                <input type="text" class="form-control" [(ngModel)]="user.nom"  formControlName="nom" minlength="3" required >
+
+                <small *ngIf="login_form.get('nom').errors">
+                    {{  login_form.get('nom').errors.minlength ? '3 caractéres au minimum': 'Champs Obligatoire'}}  
+
+                </small>  
+            </div>
+              <div class="form-group">
+                <label >Email address</label>
+                <input type="email" class="form-control" [(ngModel)]="user.email"  formControlName="email" required email="true">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                <small *ngIf="login_form.get('email').errors">
+                    {{  login_form.get('email').errors.email ? 'Format Invalide': 'Champs Obligatoire'}}  
+
+                </small>  
+            </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control"  [(ngModel)]="user.password" required formControlName="password" minlength="6">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Confirm Password</label>
+                <input type="password" class="form-control" (keyup)="identique()" [(ngModel)]="confirmpassword" required formControlName="confirmpassword" minlength="6">
+            <small *ngIf="login_form.get('confirmpassword').errors && login_form.get('confirmpassword').errors.non_identique">password Invalide</small>  
+            </div>
+              <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+              </div>
+              <button type="submit" class="btn btn-primary" [disabled]="!login_form.valid" (click)="signup()">Sign up</button>
+            </form>
+      </div>
+  
+  
