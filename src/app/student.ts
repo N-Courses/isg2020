@@ -3,7 +3,7 @@ export class Student {
     age: number;
     genre: string;
     score: number = 0;
-    email : string
+    email : string  = 'test@gmail.com'
     password : string
 
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Student } from '../student';
+import { StudentService } from '../student.service';
 
 @Component({
   selector: 'app-add-student',
@@ -9,7 +11,9 @@ import { Student } from '../student';
 })
 export class AddStudentComponent implements OnInit {
 
-  constructor() { }
+  constructor(private studentSrv : StudentService
+    , private router : Router
+    ) { }
 
   addForm : FormGroup = new FormGroup({
     'nom_eleve' : new FormControl([Validators.required ,
@@ -26,7 +30,11 @@ export class AddStudentComponent implements OnInit {
 
   save(){
     console.log(this.new_student);
-    this.new_student = new Student();
+    this.studentSrv.addStudent(this.new_student)
+    .subscribe(success=>{
+        this.new_student = new Student();
+        this.router.navigate(['/students'])
+    })
   }
  
 

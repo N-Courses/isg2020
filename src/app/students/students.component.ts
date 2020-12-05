@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StudentService } from '../student.service';
 
 @Component({
   selector: 'app-students',
@@ -8,9 +9,9 @@ import { Component, OnInit } from '@angular/core';
 export class StudentsComponent implements OnInit {
 
 
-  constructor() { }
+  constructor(private studentSrv : StudentService) { }
 
-  students = [
+  /* students = [
     {
       id : 1,
       nom : "Amal",
@@ -51,11 +52,17 @@ export class StudentsComponent implements OnInit {
       genre : "F",
       photo : 'user2.png'
     }
-  ]
+  ] */
 
+  students :any[];
   students_copy : any[] = [];
   ngOnInit(): void {
-    this.students_copy = this.students
+    this.studentSrv.getAll()
+    .subscribe((success : any[])=>{
+      this.students = success;
+      this.students_copy = this.students
+
+    })
   }
 
 
