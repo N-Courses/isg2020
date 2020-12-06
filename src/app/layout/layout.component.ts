@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -8,9 +9,13 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class LayoutComponent implements OnInit {
 
-  constructor(public translate : TranslateService) { }
+  constructor(private router : Router,
+    public translate : TranslateService) { }
 
   ngOnInit(): void {
+    if(!localStorage.getItem('email')){
+      this.router.navigate(['/register'])
+    }
   }
 
   changeLang(lang : string){

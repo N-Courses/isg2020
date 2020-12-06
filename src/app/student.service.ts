@@ -36,4 +36,17 @@ export class StudentService {
 
   }
 
+  upload(file){
+    return this.http.post(this.url+'/upload'  ,file )
+  }
+
+  register(body : Student){
+    return this.http.post(this.url+'/register' , body)
+  }
+
+  login(email , password){
+    return this.http.post(this.url+'/login' , 
+    {email : email , password : password})
+  }
+
 }

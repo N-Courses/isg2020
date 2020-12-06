@@ -5,5 +5,6 @@ export class Student {
     score: number = 0;
     email : string  = 'test@gmail.com'
     password : string
+    photo : string
 
 }

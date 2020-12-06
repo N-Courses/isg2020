@@ -1,6 +1,7 @@
 
 <div class="col-md-6 offset-md-3">
-    <h2> {{'h' | translate}} {{nom}}</h2>
+    <h2> {{'h' | translate}} {{student.nom}}</h2>
+    <h3> Last Score : {{student.score}}</h3>
     <h1 *ngIf="compteur < 11">Question : {{compteur}} / 10</h1>
     <b *ngIf="compteur < 11"> {{nb1}} * {{nb2}} </b>
     <input [disabled]="compteur >10 " class="form-control" [(ngModel)]="result" (keyup.enter)="next()">

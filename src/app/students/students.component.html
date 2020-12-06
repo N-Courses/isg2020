@@ -27,8 +27,8 @@
 
     <div class="row">
         <div class="col-md-3" *ngFor="let student of students" style="padding-top : 50px">
-            <div class="card"  [routerLink]="['/game',student.nom]">
-                <img [src]="'assets/'+student.photo">
+            <div class="card"  [routerLink]="['/game',student._id]">
+                <img [src]="'http://localhost:5000/'+student.photo">
                <!--  <img src="assets/{{student.photo}}"> -->
                 <h3 >{{student.nom}}</h3>
                 <h4>{{student.score}}</h4>

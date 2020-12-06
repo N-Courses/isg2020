@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AddStudentComponent } from './add-student/add-student.component';
+import { AuthguardService } from './authguard.service';
 import { BindingComponent } from './binding/binding.component';
 import { GameComponent } from './game/game.component';
 import { LayoutComponent } from './layout/layout.component';
@@ -19,12 +20,14 @@ const routes: Routes = [
   {
     path : '',
     component : LayoutComponent,
+    canActivate : [AuthguardService],
     children : [
       {
         path : 'students',
         component : StudentsComponent
+       
       },{
-        path : 'game/:nom',
+        path : 'game/:id',
         component : GameComponent
       },{
         path : 'todo',

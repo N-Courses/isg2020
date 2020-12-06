@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import Swal from 'sweetalert2';
+import { Student } from '../student';
+import { StudentService } from '../student.service';
 
 
 @Component({
@@ -11,20 +14,27 @@ export class GameComponent implements OnInit {
 
   constructor(
     private route : ActivatedRoute,
-    private router : Router
+    private router : Router,
+    private studentSrv : StudentService
   ) { 
 
   }
   
-  nom : string = '' ;
+  id : string = '' ;
   compteur = 1;
   nb1 = Math.floor((Math.random()*20)+1)
   nb2 = Math.floor((Math.random()*20)+1)
   result = undefined;
   score = 0;
   start_date = new Date();
+  student : Student;
   ngOnInit(): void { 
-    this.nom = this.route.snapshot.params['nom']
+    this.id = this.route.snapshot.params['id']
+    this.studentSrv.getById(this.id)
+    .subscribe((result : Student)=>{
+      this.student = result;
+      console.log("result backend" , result)
+    })
   }
   next(){
     if(this.compteur <10){
@@ -48,6 +58,13 @@ export class GameComponent implements OnInit {
     
     this.score = Math.floor((this.score * 1000000)/diff)
     console.log(diff)
+
+    if(this.score > this.student.score){
+      this.studentSrv.updateScore(this.id , this.score)
+      .subscribe(()=>{
+        Swal.fire('Congrats !' , 'Best new score' , 'success')
+      })
+    }
   }
   back(){
 

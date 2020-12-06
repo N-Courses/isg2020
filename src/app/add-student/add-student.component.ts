@@ -37,6 +37,18 @@ export class AddStudentComponent implements OnInit {
     })
   }
  
+  uploadFile(event){
+   let form = new FormData();
+   if(event.target.files.length >0){
+     let file = event.target.files[0];
+     form.append("uploads[]" , file , file.name)
+     this.studentSrv.upload(form)
+     .subscribe((result : any)=>{
+      console.log(result)
+      this.new_student.photo = result.path
+     })
+   }
+  }
 
 }
 

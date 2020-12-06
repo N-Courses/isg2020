@@ -20,4 +20,6 @@
         <br>
         <button (click)="save()" [disabled]="!addForm.valid" class="form-control btn-success">Save</button>
     </form>
+
+    <input type="file" (change)="uploadFile($event)" >
 </div>
